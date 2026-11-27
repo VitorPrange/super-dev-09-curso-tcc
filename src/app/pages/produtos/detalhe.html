@@ -1,0 +1,86 @@
+<div class="page">
+  <div class="page-head">
+    <div class="grow">
+      <div class="row g8"><h1>Ração bovina 25 kg</h1><span class="badge amb">Baixo estoque</span></div>
+      <p>Alimento · saco · código de barras 7891000100103</p>
+    </div>
+    <div class="col g4 right"><span class="small mut">Preço atual</span><span class="num">R$ 104,00</span></div>
+    <a class="btn" routerLink="/estoque/ajuste">Ajustar estoque</a>
+    <a class="btn primary" routerLink="/produtos/racao-bovina/editar"><app-icon name="edit" [size]="16" />Editar</a>
+  </div>
+
+  <div class="tabs">
+    <a [class.on]="!estado()" routerLink="/produtos/racao-bovina">Geral</a>
+    <a [class.on]="estado() === 'estoque'" routerLink="/produtos/racao-bovina/estoque">Estoque</a>
+    <a [class.on]="estado() === 'precos'" routerLink="/produtos/racao-bovina/precos">Preços</a>
+    <a [class.on]="estado() === 'fornecedores'" routerLink="/produtos/racao-bovina/fornecedores">Fornecedores</a>
+  </div>
+
+  @switch (estado()) {
+    @case ('estoque') {
+      <div class="grid-3">
+        <div class="card metric"><span class="small mut">Saldo atual</span><span class="num amb">3 sacos</span></div>
+        <div class="card metric"><span class="small mut">Estoque mínimo</span><span class="num">10 sacos</span></div>
+        <div class="card metric"><span class="small mut">Saídas nos últimos 30 dias</span><span class="num">41 sacos</span></div>
+      </div>
+      <div class="card">
+        <div class="row sb"><h2>Últimas movimentações</h2><a class="small grn" routerLink="/estoque/movimentacoes">Ver todas →</a></div>
+        <table class="table">
+          <thead><tr><th>Data</th><th>Tipo</th><th class="r">Quantidade</th><th class="r">Saldo após</th><th>Origem</th></tr></thead>
+          <tbody>
+            <tr><td>24/11 · 16:42</td><td>Saída por leitor (venda)</td><td class="r red">−2</td><td class="r">3</td><td class="grn">Venda 16:42</td></tr>
+            <tr><td>24/11 · 11:25</td><td>Saída por leitor (venda)</td><td class="r red">−1</td><td class="r">5</td><td class="grn">Venda 11:25</td></tr>
+            <tr><td>22/11 · 13:52</td><td>Entrada por nota</td><td class="r grn">+20</td><td class="r">6</td><td class="grn">NF-e 000.118</td></tr>
+            <tr><td>20/11 · 18:00</td><td>Perda</td><td class="r red">−1</td><td class="r">−</td><td>João · saco rasgado</td></tr>
+          </tbody>
+        </table>
+      </div>
+    }
+    @case ('precos') {
+      <div class="card">
+        <h2>Histórico de preços</h2>
+        <table class="table">
+          <thead><tr><th>Data</th><th class="r">Custo</th><th class="r">Preço</th><th>Margem aplicada</th><th>Origem</th><th>Quem alterou</th></tr></thead>
+          <tbody>
+            <tr><td>24/11/2026</td><td class="r">R$ 80,00</td><td class="r strong">R$ 104,00</td><td>Global 30%</td><td class="grn">NF-e 000.123</td><td>João</td></tr>
+            <tr><td>10/10/2026</td><td class="r">R$ 75,00</td><td class="r strong">R$ 98,00</td><td>Manual</td><td>Manual</td><td>João</td></tr>
+            <tr><td>02/09/2026</td><td class="r">R$ 75,00</td><td class="r strong">R$ 97,90</td><td>Global 30% · arredondado</td><td class="grn">NF-e 000.101</td><td>João</td></tr>
+            <tr><td>15/07/2026</td><td class="r">R$ 70,00</td><td class="r strong">R$ 91,00</td><td>Nota 30%</td><td class="grn">NF-e 000.087</td><td>João</td></tr>
+          </tbody>
+        </table>
+      </div>
+    }
+    @case ('fornecedores') {
+      <div class="card">
+        <div class="row sb"><h2>Vínculos com fornecedores</h2><span class="btn sm"><app-icon name="plus" [size]="15" />Adicionar vínculo</span></div>
+        <table class="table">
+          <thead><tr><th>Fornecedor</th><th>Código no fornecedor</th><th class="r">Fator</th><th class="r">Último custo</th><th>Última nota</th></tr></thead>
+          <tbody>
+            <tr><td><a class="strong" routerLink="/fornecedores/agrovale">AgroVale Distribuidora</a></td><td>RB-25</td><td class="r">1</td><td class="r">R$ 80,00</td><td class="grn">NF-e 000.123 · 24/11</td></tr>
+            <tr><td><a class="strong" routerLink="/fornecedores/agrovale">Rural Sul Insumos</a></td><td>0045871</td><td class="r">1</td><td class="r">R$ 78,50</td><td class="grn">NF-e 000.097 · 12/08</td></tr>
+          </tbody>
+        </table>
+        <p class="small mut">O vínculo faz o PAM reconhecer este produto nas próximas notas do fornecedor, mesmo com outro nome.</p>
+      </div>
+    }
+    @default {
+      <div class="grid-2">
+        <div class="card">
+          <h2>Dados do produto</h2>
+          <div class="kv"><span>Unidade de venda</span><span>Saco</span></div>
+          <div class="kv"><span>Código de barras</span><span>7891000100103</span></div>
+          <div class="kv"><span>NCM</span><span>2309.90.10</span></div>
+          <div class="kv"><span>Estoque mínimo</span><span>10</span></div>
+          <div class="kv"><span>Situação</span><span class="grn">Ativo</span></div>
+          <div class="kv"><span>Criado em</span><span>03/02/2026</span></div>
+        </div>
+        <div class="card">
+          <h2>Regras de preço e venda</h2>
+          <div class="inner row sb"><div class="col g4"><span class="strong">Preço travado</span><span class="small mut">Não travado: recebe sugestão nas notas</span></div><a class="small grn" routerLink="/configuracoes/precos/travados">Lista de travados</a></div>
+          <div class="inner row sb"><div class="col g4"><span class="strong">Margem individual</span><span class="small mut">Usa a margem global (30%)</span></div><a class="small grn" routerLink="/configuracoes/precos/margens">Margens individuais</a></div>
+          <div class="inner row sb"><div class="col g4"><span class="strong">Venda restrita</span><span class="small mut">Não restrito · automático (nenhuma regra bateu)</span></div><a class="small grn" routerLink="/configuracoes/restritas">Regras</a></div>
+        </div>
+      </div>
+    }
+  }
+</div>

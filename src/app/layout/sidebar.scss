@@ -1,0 +1,19 @@
+.nav { position: sticky; top: 0; height: 100vh; width: 256px; background: var(--side); color: var(--side-txt); padding: 28px 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; overflow: auto; }
+.brand { display: flex; gap: 12px; align-items: center; }
+.mark { width: 40px; height: 40px; border-radius: 12px; background: var(--lg); color: var(--grn); display: inline-flex; align-items: center; justify-content: center; }
+.name { color: #fff; font-size: 20px; font-weight: 600; line-height: 28px; }
+.slogan { font-size: 12px; }
+.menu { margin-top: 40px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.menu-label { font-size: 12px; margin-bottom: 0; }
+.item { height: 50px; border-radius: 10px; padding: 0 14px; display: flex; align-items: center; gap: 12px; color: var(--side-txt); }
+.item:hover { background: rgba(255,255,255,.05); }
+.item.on, .item-wrap.on .item { background: var(--side-sel); color: #fff; font-weight: 600; }
+.item .dot { margin-left: auto; }
+.monitor { background: var(--side-sel); border-radius: 10px; padding: 16px; display: flex; flex-direction: column; gap: 8px; color: #fff; }
+.monitor p { color: var(--side-txt); }
+.live { width: 7px; height: 7px; background: #a9d0a4; }
+.sep { height: 1px; background: rgba(255,255,255,.12); margin: 24px 0; }
+.user { display: flex; align-items: center; gap: 12px; color: #fff; }
+.avatar { width: 40px; height: 40px; border-radius: 99px; background: #ffb31f; color: var(--side); display: inline-flex; align-items: center; justify-content: center; font-weight: 600; }
+.soft { color: var(--side-txt); }
+.map { display: block; margin-top: 12px; font-size: 12px; color: var(--side-txt); text-decoration: underline; text-underline-offset: 3px; }

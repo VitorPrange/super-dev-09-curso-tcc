@@ -1,0 +1,12 @@
+.login { display: grid; grid-template-columns: 620px 1fr; min-height: 100vh; }
+.intro { background: var(--side); color: #fff; padding: 64px 64px 56px; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; }
+.mark { width: 48px; height: 48px; border-radius: 14px; background: var(--lg); color: var(--grn); display: inline-flex; align-items: center; justify-content: center; }
+.name { font-size: 22px; font-weight: 600; line-height: 30px; }
+.soft { color: var(--side-txt); }
+.big { font-size: 40px; line-height: 52px; }
+.lead { font-size: 16px; line-height: 26px; }
+ul { list-style: none; padding: 0; margin: 0; }
+li { display: flex; gap: 12px; align-items: center; }
+.tick { width: 26px; height: 26px; border-radius: 99px; background: var(--side-sel); display: inline-flex; align-items: center; justify-content: center; }
+.form-area { display: flex; align-items: center; justify-content: center; padding: 32px; }
+.form { width: 440px; padding: 36px; gap: 20px; }

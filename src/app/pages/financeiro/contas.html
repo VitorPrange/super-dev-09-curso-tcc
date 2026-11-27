@@ -1,0 +1,49 @@
+<div class="page">
+  <div class="page-head">
+    <div class="grow"><h1>Financeiro</h1><p>Contas a pagar, fluxo de caixa e lançamentos da loja.</p></div>
+    <span class="btn primary"><app-icon name="plus" />Nova conta</span>
+  </div>
+  <div class="tabs"><a class="on">Contas a pagar</a><a routerLink="/financeiro/fluxo">Fluxo de caixa</a><a routerLink="/financeiro/lancamentos">Lançamentos</a></div>
+
+  <div class="grid-4">
+    <div class="card metric"><span class="small mut">A vencer (7 dias)</span><span class="num">R$ 1.890,00</span><span class="small mut">3 parcelas</span></div>
+    <div class="card metric"><span class="small mut">Vencem hoje</span><span class="num amb">R$ 1.240,00</span><span class="small mut">1 parcela</span></div>
+    <div class="card metric"><span class="small mut">Atrasadas</span><span class="num red">R$ 320,00</span><span class="small mut">1 parcela</span></div>
+    <div class="card metric"><span class="small mut">Pagas no mês</span><span class="num grn">R$ 6.410,50</span><span class="small mut">9 parcelas</span></div>
+  </div>
+
+  <div class="card">
+    <div class="row">
+      <span class="btn"><app-icon name="calendar" [size]="16" />Vencimento: próximos 30 dias</span>
+      <span class="btn">Situação: em aberto<app-icon name="chevron-down" [size]="16" /></span>
+      <span class="btn">Fornecedor: todos<app-icon name="chevron-down" [size]="16" /></span>
+      <span class="btn">Origem: todas<app-icon name="chevron-down" [size]="16" /></span>
+    </div>
+    <table class="table">
+      <thead><tr><th>Vencimento</th><th>Fornecedor</th><th>Nota / parcela</th><th class="r">Valor</th><th>Situação</th><th class="r"></th></tr></thead>
+      <tbody>
+        <tr class="hl"><td class="strong">20/11/2026</td><td>Casa do Campo</td><td>NF 000.115 · 2/2</td><td class="r strong">R$ 320,00</td><td><span class="badge red">Atrasada · 5 dias</span></td><td class="r"><a class="btn sm" routerLink="/financeiro/contas/pagar">Registrar pagamento</a></td></tr>
+        <tr><td class="strong">25/11/2026</td><td>AgroVale Distribuidora</td><td>NF 000.118 · 1/3</td><td class="r strong">R$ 1.240,00</td><td><span class="badge amb">Vence hoje</span></td><td class="r"><a class="btn sm primary" routerLink="/financeiro/contas/pagar">Registrar pagamento</a></td></tr>
+        <tr><td>28/11/2026</td><td>Pet Center Atacado</td><td>NF 004.540 · 2/2</td><td class="r">R$ 430,00</td><td><span class="badge neu">Em aberto</span></td><td class="r"><a class="btn sm" routerLink="/financeiro/contas/pagar">Registrar pagamento</a></td></tr>
+        <tr><td>30/11/2026</td><td>Celesc (energia)</td><td><span class="badge blu sm">Manual</span></td><td class="r">R$ 220,00</td><td><span class="badge neu">Em aberto</span></td><td class="r"><a class="btn sm" routerLink="/financeiro/contas/pagar">Registrar pagamento</a></td></tr>
+        <tr><td>24/12/2026</td><td>AgroVale Distribuidora</td><td>NF 000.123 · 1/3</td><td class="r">R$ 1.240,00</td><td><span class="badge neu">Em aberto</span></td><td class="r"><a class="btn sm" routerLink="/financeiro/contas/pagar">Registrar pagamento</a></td></tr>
+        <tr class="muted"><td>18/11/2026</td><td>Rural Sul Insumos</td><td>NF 000.110 · 1/1</td><td class="r">R$ 980,00</td><td><span class="badge">Paga em 18/11 · Pix</span></td><td class="r"><span class="small grn">Reabrir</span></td></tr>
+      </tbody>
+    </table>
+    <div class="alert"><app-icon name="info" /><span>As parcelas vêm das duplicatas do XML (número, vencimento, valor). Notas pagas à vista ou por boleto podem vir sem parcelas — aí você adiciona na revisão da nota.</span></div>
+  </div>
+</div>
+
+@if (estado() === 'pagar') {
+  <div class="overlay"><div class="modal">
+    <div class="modal-head"><div class="grow"><h2>Registrar pagamento</h2><p>AgroVale Distribuidora · NF 000.118 · parcela 1/3 · vence hoje</p></div><a class="icon-btn" aria-label="Fechar" routerLink="/financeiro/contas"><app-icon name="x" /></a></div>
+    <div class="grid-2">
+      <div class="field"><label>Data do pagamento</label><div class="input"><input value="25/11/2026" /><app-icon name="calendar" [size]="16" class="mut" /></div></div>
+      <div class="field"><label>Valor pago</label><div class="input"><span class="suf">R$</span><input value="1.240,00" /></div></div>
+    </div>
+    <div class="field"><label>Forma</label><div class="chips"><span class="chip">Dinheiro</span><span class="chip on">Pix</span><span class="chip">Boleto</span><span class="chip">Transferência</span><span class="chip">Cartão</span><span class="chip">Outro</span></div></div>
+    <div class="field"><label>Observação</label><div class="input"><input placeholder="Opcional" /></div></div>
+    <p class="small mut">A parcela vira "Paga", gera uma saída no fluxo de caixa e entra no histórico.</p>
+    <div class="modal-foot"><a class="btn" routerLink="/financeiro/contas">Cancelar</a><a class="btn primary" routerLink="/financeiro/contas">Registrar pagamento</a></div>
+  </div></div>
+}

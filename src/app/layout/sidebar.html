@@ -1,0 +1,43 @@
+<aside class="nav">
+  <div class="brand">
+    <span class="mark"><app-icon name="sprout" [size]="26" [stroke]="1.7" /></span>
+    <div>
+      <div class="name">PAM Agro</div>
+      <div class="slogan">Seu estoque, mais simples.</div>
+    </div>
+  </div>
+
+  <div class="menu">
+    <div class="menu-label">GESTÃO DA LOJA</div>
+    <a class="item" routerLink="/inicio" routerLinkActive="on"><app-icon name="home" [size]="22" [stroke]="1.6" />Início</a>
+    <a class="item" routerLink="/venda" routerLinkActive="on"><app-icon name="scan" [size]="22" [stroke]="1.6" />Venda rápida</a>
+    <div class="item-wrap" routerLinkActive="on">
+      <a class="item" routerLink="/produtos"><app-icon name="inbox" [size]="22" [stroke]="1.6" />Produtos</a>
+      <a routerLink="/estoque" hidden></a>
+      <a routerLink="/fornecedores" hidden></a>
+    </div>
+    <a class="item" routerLink="/notas" routerLinkActive="on">
+      <app-icon name="bell" [size]="22" [stroke]="1.6" />Notas fiscais<span class="dot amb"></span>
+    </a>
+    <a class="item" routerLink="/financeiro" routerLinkActive="on"><app-icon name="wallet" [size]="22" [stroke]="1.6" />Financeiro</a>
+    <a class="item" routerLink="/historico" routerLinkActive="on"><app-icon name="calendar" [size]="22" [stroke]="1.6" />Histórico</a>
+    <a class="item" routerLink="/configuracoes" routerLinkActive="on"><app-icon name="settings" [size]="22" [stroke]="1.6" />Configurações</a>
+  </div>
+
+  <div class="bottom">
+    <div class="monitor">
+      <div class="row g8"><span class="dot live"></span><span class="small">Busca de XML ativa</span></div>
+      <p class="small">Avisamos quando uma nova nota chegar.</p>
+    </div>
+    <a class="map" routerLink="/telas">Mapa de telas (demonstração)</a>
+    <div class="sep"></div>
+    <a class="user" routerLink="/configuracoes/loja">
+      <span class="avatar">JA</span>
+      <div class="grow">
+        <div class="small soft">Administrador</div>
+        <div class="strong">João Almeida</div>
+      </div>
+      <app-icon name="chevron-right" [size]="16" />
+    </a>
+  </div>
+</aside>

@@ -1,0 +1,52 @@
+<div class="page">
+  <div class="page-head">
+    <div class="grow"><h1>Financeiro</h1><p>Contas a pagar, fluxo de caixa e lançamentos da loja.</p></div>
+  </div>
+  <div class="tabs"><a routerLink="/financeiro/contas">Contas a pagar</a><a class="on">Fluxo de caixa</a><a routerLink="/financeiro/lancamentos">Lançamentos</a></div>
+
+  <div class="row sb">
+    <div class="chips"><span class="chip">7 dias</span><span class="chip">30 dias</span><span class="chip on">Este mês</span><span class="chip">Personalizado</span></div>
+    <div class="row">
+      <div class="chips"><span class="chip on">Realizado + previsto</span><span class="chip">Só realizado</span></div>
+      <span class="btn sm">Origem: todas<app-icon name="chevron-down" [size]="14" /></span>
+    </div>
+  </div>
+
+  <div class="grid-4">
+    <div class="card metric"><span class="small mut">Entradas</span><span class="num grn">R$ 18.420,30</span><span class="small mut">Vendas + lançamentos</span></div>
+    <div class="card metric"><span class="small mut">Saídas</span><span class="num red">R$ 9.870,50</span><span class="small mut">Contas pagas + lançamentos</span></div>
+    <div class="card metric"><span class="small mut">Saldo do período</span><span class="num">R$ 8.549,80</span><span class="small mut">01/11 a 25/11</span></div>
+    <div class="card metric"><span class="small mut">Saldo previsto (30/11)</span><span class="num">R$ 6.339,80</span><span class="small mut">− R$ 2.210,00 em contas abertas</span></div>
+  </div>
+
+  <div class="card">
+    <div class="row sb"><h2>Entradas e saídas por dia</h2>
+      <div class="legend"><span><i class="in"></i>Entradas</span><span><i class="out"></i>Saídas</span><span><i class="prev" style="border:1px dashed #e3b6a8"></i>Saídas previstas</span></div>
+    </div>
+    <div class="chart">
+      @for (d of dias; track d[0]) {
+        <div class="day">
+          <div class="bars">
+            @if (d[1]) { <div class="bar in" [style.height.%]="d[1]"></div> }
+            @if (d[2]) { <div class="bar" [class.out]="!d[3]" [class.prev]="d[3]" [style.height.%]="d[2]"></div> }
+          </div>
+          <span class="lbl">{{ d[0] }}</span>
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Movimento do caixa</h2>
+    <table class="table">
+      <thead><tr><th>Data</th><th>Descrição</th><th>Categoria</th><th>Origem</th><th class="r">Entrada</th><th class="r">Saída</th><th class="r">Saldo acumulado</th></tr></thead>
+      <tbody>
+        <tr><td>24/11</td><td>Venda rápida 16:42 · Pix</td><td>Vendas</td><td><span class="badge sm">Venda</span></td><td class="r grn">R$ 345,00</td><td class="r"></td><td class="r strong">R$ 8.549,80</td></tr>
+        <tr><td>24/11</td><td>Venda rápida 14:10 · Dinheiro</td><td>Vendas</td><td><span class="badge sm">Venda</span></td><td class="r grn">R$ 129,90</td><td class="r"></td><td class="r strong">R$ 8.204,80</td></tr>
+        <tr><td>23/11</td><td>Embalagens e sacolas</td><td>Outros</td><td><span class="badge blu sm">Manual</span></td><td class="r"></td><td class="r red">R$ 86,00</td><td class="r strong">R$ 8.074,90</td></tr>
+        <tr><td>22/11</td><td>Pagamento NF 000.110 · Rural Sul</td><td>Fornecedores</td><td><span class="badge amb sm">Conta paga</span></td><td class="r"></td><td class="r red">R$ 980,00</td><td class="r strong">R$ 8.160,90</td></tr>
+        <tr class="muted"><td>25/11</td><td>Previsto: NF 000.118 · 1/3 · AgroVale</td><td>Fornecedores</td><td><span class="badge neu sm">Previsto</span></td><td class="r"></td><td class="r">R$ 1.240,00</td><td class="r">R$ 7.309,80</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
