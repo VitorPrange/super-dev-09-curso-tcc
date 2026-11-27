@@ -1,0 +1,83 @@
+<div class="page">
+  <div class="page-head">
+    <div class="grow">
+      @if (estado() === 'erro') {
+        <h1>Nota com erro</h1><p>Não foi possível ler este arquivo. Nada foi alterado no sistema.</p>
+      } @else {
+        <h1>NF-e 000.115 · Casa do Campo</h1><p>Somente leitura. Tudo o que foi decidido nesta nota.</p>
+      }
+    </div>
+    <a class="btn" routerLink="/notas"><app-icon name="arrow-left" />Notas fiscais</a>
+    @if (estado() !== 'erro') { <span class="btn"><app-icon name="download" />Baixar XML</span> }
+  </div>
+
+  @if (estado() === 'erro') {
+    <!-- N6 -->
+    <div class="card danger p24">
+      <div class="row top g16">
+        <app-icon name="alert" class="red" [size]="28" />
+        <div class="grow col g8">
+          <h2 class="red">Este arquivo não parece ser uma NF-e</h2>
+          <p>O arquivo <span class="strong">nota-dez.xml</span> é um XML válido, mas não tem a estrutura de uma nota fiscal eletrônica (não encontramos o grupo da NF-e nem a chave de acesso).</p>
+          <div class="small mut">Enviado por João em 21/11/2026 às 16:48</div>
+        </div>
+      </div>
+      <div class="row"><a class="btn primary" routerLink="/notas/importar"><app-icon name="upload" />Enviar de novo</a><span class="btn danger-ghost"><app-icon name="trash" />Descartar</span></div>
+    </div>
+    <div class="card">
+      <h3>Outros erros possíveis</h3>
+      <div class="grid-2">
+        <div class="inner col g4"><span class="strong">O arquivo não é um XML válido</span><span class="small mut">O conteúdo está corrompido ou não é XML.</span></div>
+        <div class="inner col g4"><span class="strong">Esta nota já foi importada em 22/11</span><span class="small mut">Mesma chave de acesso. <a class="acc" routerLink="/notas/000118">Ver a nota</a></span></div>
+        <div class="inner col g4"><span class="strong">A nota não tem itens</span><span class="small mut">O XML não traz nenhum produto para analisar.</span></div>
+        <div class="inner col g4"><span class="strong">Este arquivo não parece ser uma NF-e</span><span class="small mut">Falta a estrutura da nota fiscal.</span></div>
+      </div>
+    </div>
+  } @else {
+    <div class="card">
+      <div class="row sb"><h2>NF-e 000.115 · série 1</h2><div class="row g8"><span class="badge neu">Concluída</span><span class="badge amb">Ciência dada — final pendente</span></div></div>
+      <div class="grid-4 small">
+        <div class="col g4"><span class="mut">Fornecedor</span><span>Casa do Campo Ltda.</span></div>
+        <div class="col g4"><span class="mut">Recebida em</span><span>20/11/2026 às 11:05</span></div>
+        <div class="col g4"><span class="mut">Origem</span><span>SEFAZ (busca automática)</span></div>
+        <div class="col g4"><span class="mut">Valor total</span><span>R$ 640,00</span></div>
+      </div>
+      <div class="inner row sb small">
+        <span><span class="mut">Chave de acesso </span><span class="mono">4226 1112 3456 7800 0190 5500 1000 0001 1510 0000 1159</span></span>
+        <span class="row g6 acc"><app-icon name="copy" [size]="16" />Copiar</span>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="card">
+        <div class="tabs"><a class="on">Itens e decisões</a><a>Estoque</a><a>Financeiro</a><a>Linha do tempo</a></div>
+        <table class="table">
+          <thead><tr><th>Item</th><th>Qtd.</th><th>Decisão</th><th class="r">Antes → depois</th></tr></thead>
+          <tbody>
+            <tr><td>Ração gato adulto 10 kg</td><td>6 un.</td><td><span class="badge">Preço atualizado</span></td><td class="r">R$ 118,00 → <span class="strong">R$ 124,90</span></td></tr>
+            <tr><td>Coleira antipulgas M</td><td>12 un.</td><td><span class="badge">Cadastrado</span></td><td class="r">— → <span class="strong">R$ 39,90</span></td></tr>
+            <tr><td>Areia sanitária 4 kg</td><td>10 un.</td><td><span class="badge neu">Mantido</span></td><td class="r">R$ 22,90</td></tr>
+            <tr><td>Petisco bifinho 500 g</td><td>8 un.</td><td><span class="badge neu">Não cadastrado</span></td><td class="r">—</td></tr>
+          </tbody>
+        </table>
+        <div class="grid-2">
+          <div class="inner col g6"><span class="strong">Estoque</span><span class="small">3 entradas por nota · +28 unidades</span><a class="small acc" routerLink="/estoque/movimentacoes">Ver movimentações</a></div>
+          <div class="inner col g6"><span class="strong">Financeiro</span><span class="small">2 parcelas · 1 paga (R$ 320,00) · 1 vence 20/12</span><a class="small acc" routerLink="/financeiro/contas">Ver contas</a></div>
+        </div>
+        <div class="row sb small mut"><span>Desfazer só é possível se nenhum destes produtos teve o preço alterado depois.</span><span class="btn sm danger-ghost"><app-icon name="undo" [size]="16" />Desfazer preços desta nota</span></div>
+      </div>
+
+      <div class="card">
+        <h3>Linha do tempo</h3>
+        <div class="timeline">
+          <div><span class="tdot"></span><div><div>Recebida pela SEFAZ</div><div class="small mut">20/11 · 11:05</div></div></div>
+          <div><span class="tdot"></span><div><div>Ciência registrada (manual)</div><div class="small mut">20/11 · 11:07 · João</div></div></div>
+          <div><span class="tdot"></span><div><div>Nota aberta</div><div class="small mut">20/11 · 13:40</div></div></div>
+          <div><span class="tdot"></span><div><div>Confirmada por João</div><div class="small mut">20/11 · 13:52 · 1 cadastro, 1 preço</div></div></div>
+          <div><span class="tdot"></span><div><div>Etiquetas atualizadas</div><div class="small mut">20/11 · 15:10</div></div></div>
+          <div><span class="tdot off"></span><div><div class="amb">Manifestação final pendente</div><div class="small mut">Prazo de alerta: 18/02/2027</div><a class="small acc" routerLink="/notas/000115/manifestacao">Manifestar agora</a></div></div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

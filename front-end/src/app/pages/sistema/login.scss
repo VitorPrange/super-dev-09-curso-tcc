@@ -1,0 +1,23 @@
+.login { display: grid; grid-template-columns: 620px 1fr; min-height: 100vh; }
+.intro {
+  background: var(--stamp); color: var(--surface); padding: 64px 64px 56px;
+  display: flex; flex-direction: column; justify-content: space-between; gap: 40px;
+  position: relative; overflow: hidden;
+}
+/* o nome da marca em estêncil, grande e cortado na borda, como letra pintada na saca */
+.intro::after {
+  content: 'PAM'; position: absolute; right: -40px; top: 120px;
+  font-family: var(--font-brand); font-size: 300px; line-height: 1; color: rgba(255, 255, 255, .045);
+  pointer-events: none;
+}
+.intro > * { position: relative; z-index: 1; }
+.mark { width: 48px; height: 48px; border-radius: var(--r); background: var(--corn); color: var(--stamp); display: inline-flex; align-items: center; justify-content: center; }
+.name { font-family: var(--font-brand); font-size: 28px; line-height: 30px; letter-spacing: 0.04em; text-transform: uppercase; }
+.soft { color: var(--stamp-text); }
+.big { font-size: 60px; line-height: 58px; font-weight: 700; }
+.lead { font-size: 17px; line-height: 27px; max-width: 46ch; }
+ul { list-style: none; padding: 0; margin: 0; }
+li { display: flex; gap: 12px; align-items: center; }
+.tick { width: 26px; height: 26px; border-radius: 3px; background: var(--corn); color: var(--stamp); display: inline-flex; align-items: center; justify-content: center; }
+.form-area { display: flex; align-items: center; justify-content: center; padding: 32px; }
+.form { width: 440px; padding: 36px; gap: 20px; border-top: 4px solid var(--ink); }

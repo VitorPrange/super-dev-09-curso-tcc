@@ -1,0 +1,88 @@
+<div class="page">
+  <div class="page-head">
+    <div class="grow"><h1>Venda rápida</h1><p>Aponte o leitor para o código de barras. O estoque só baixa depois que você confirmar.</p></div>
+    <a class="btn" routerLink="/estoque/saida">Saída manual (perda, uso)</a>
+  </div>
+
+  @if (estado() === 'registrada') {
+    <div class="alert ok"><app-icon name="check-circle" /><span class="grow"><span class="strong">Saída registrada — R$ 345,00 (Pix).</span> Estoque baixado e entrada lançada no financeiro.</span><span class="small">Estornar</span></div>
+  }
+
+  <div class="split">
+    <div class="col g16">
+      <div class="scan">
+        <app-icon name="scan" class="acc" [size]="26" />
+        <input placeholder="Aponte o leitor para o código de barras" [value]="estado() === 'nao-encontrado' ? '7899999000123' : ''" />
+        <span class="badge">Leitor pronto</span>
+      </div>
+      <div class="row small mut"><app-icon name="search" [size]="16" /><span>Sem código ou leitor sem funcionar?</span><span class="acc">Buscar produto pelo nome</span></div>
+
+      @if (estado() === 'nao-encontrado') {
+        <div class="card warn" style="flex-direction:row;align-items:center">
+          <app-icon name="alert" class="amb" [size]="22" />
+          <div class="grow"><div class="strong">Código 7899999000123 não cadastrado</div><div class="small amb">Nenhum produto usa este código de barras.</div></div>
+          <a class="btn sm" routerLink="/produtos/novo">Cadastrar produto com este código</a><span class="btn sm ghost">Ignorar</span>
+        </div>
+      }
+
+      <div class="card">
+        @if (estado() === 'vazio') {
+          <div class="empty"><span class="ico"><app-icon name="scan" [size]="34" /></span><h3 style="color:var(--ink)">Aguardando leitura</h3><p>Os produtos lidos aparecem aqui, com os valores somados.</p></div>
+        } @else {
+        <div class="row sb"><h2>Itens da venda</h2><span class="small mut">Ler o mesmo código de novo soma 1</span></div>
+        <table class="table">
+          <thead><tr><th>Produto</th><th class="c">Qtd.</th><th class="r">Preço unit.</th><th class="r">Subtotal</th><th class="menu-cell"></th></tr></thead>
+          <tbody>
+            <tr class="flash"><td><div class="strong">Ração bovina 25 kg</div><div class="small acc">Acabou de ser lido · 7891000100103</div></td><td class="c"><span class="qty"><span>−</span><span class="n">2</span><span>+</span></span></td><td class="r">R$ 104,00</td><td class="r strong">R$ 208,00</td><td class="menu-cell"><span class="icon-btn"><app-icon name="trash" [size]="16" /></span></td></tr>
+            <tr><td><div class="strong">Semente de capim 1 kg</div><div class="small mut">7891000200206</div></td><td class="c"><span class="qty"><span>−</span><span class="n">3</span><span>+</span></span></td><td class="r">R$ 28,00</td><td class="r strong">R$ 84,00</td><td class="menu-cell"><span class="icon-btn"><app-icon name="trash" [size]="16" /></span></td></tr>
+            <tr class="hl"><td><div class="strong">Sal mineral 10 kg</div><div class="small amb">Saldo insuficiente: 1 em estoque</div></td><td class="c"><span class="qty"><span>−</span><span class="n">2</span><span>+</span></span></td><td class="r">R$ 39,00</td><td class="r strong">R$ 78,00</td><td class="menu-cell"><span class="icon-btn"><app-icon name="trash" [size]="16" /></span></td></tr>
+            <tr><td><div class="strong">Vermífugo bovino 50 ml <span class="badge red sm"><app-icon name="shield" [size]="12" />Venda restrita</span></div><div class="small mut">Ação ao ler um item restrito: a definir (D14)</div></td><td class="c"><span class="qty"><span>−</span><span class="n">1</span><span>+</span></span></td><td class="r">R$ 24,90</td><td class="r strong">R$ 24,90</td><td class="menu-cell"><span class="icon-btn"><app-icon name="trash" [size]="16" /></span></td></tr>
+          </tbody>
+        </table>
+        }
+      </div>
+
+      <div class="foot">
+        <div class="col g4">@if (estado() === 'vazio') { <span class="small soft">Nenhum item lido</span> } @else { <span class="small soft">8 itens · 4 produtos</span><span class="small corn">1 item com saldo insuficiente bloqueia a confirmação</span> }</div>
+        <div class="grow"></div>
+        <div class="col g4 right"><span class="small soft">Total da venda</span><span class="total">{{ estado() === 'vazio' ? 'R$ 0,00' : 'R$ 394,90' }}</span></div>
+        <span class="btn on-dark">Limpar tudo</span>
+        <a class="btn corn-btn" [class.disabled]="estado() === 'vazio'" routerLink="/venda/confirmar">Confirmar saída</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="row sb"><h3>Últimas saídas de hoje</h3><span class="small mut">R$ 812,40</span></div>
+      @for (s of saidas; track s[0]) {
+        <div class="row" style="border-bottom:1px solid var(--line);padding-bottom:10px">
+          <div class="grow col g4"><span class="strong">{{ s[1] }}</span><span class="small mut">{{ s[0] }} · {{ s[2] }}</span></div>
+          <span class="small acc">Estornar</span>
+        </div>
+      }
+      <p class="small mut">Estornar gera movimentações inversas e um lançamento de estorno. O registro original nunca é apagado.</p>
+    </div>
+  </div>
+</div>
+
+@if (estado() === 'confirmar') {
+  <div class="overlay"><div class="modal">
+    <div class="modal-head"><div class="grow"><h2>Confirmar saída de 8 itens</h2><p>Total R$ 394,90</p></div><a class="icon-btn" aria-label="Fechar" routerLink="/venda"><app-icon name="x" /></a></div>
+    <div class="field"><span class="lbl">Forma de pagamento</span>
+      <div class="pay">
+        <span class="option" style="padding:12px">Dinheiro</span>
+        <span class="option on" style="padding:12px">Pix</span>
+        <span class="option" style="padding:12px">Cartão de débito</span>
+        <span class="option" style="padding:12px">Cartão de crédito</span>
+        <span class="option" style="padding:12px">Outro</span>
+      </div>
+    </div>
+    <div class="field"><label>Observação (opcional)</label><div class="input"><input placeholder="Ex.: cliente Sr. Antônio" /></div></div>
+    <div class="inner col g6 small">
+      <span>Ao confirmar:</span>
+      <span class="mut">1. O estoque de cada item baixa (Saída por leitor).</span>
+      <span class="mut">2. A venda entra no financeiro como receita.</span>
+      <span class="mut">3. Tudo fica registrado no histórico.</span>
+    </div>
+    <div class="modal-foot"><a class="btn" routerLink="/venda">Cancelar</a><a class="btn primary" routerLink="/venda/registrada">Confirmar saída</a></div>
+  </div></div>
+}

@@ -1,0 +1,44 @@
+<div class="page">
+  <div class="page-head">
+    <div class="grow"><h1>Histórico</h1><p>Tudo o que mudou no sistema, com antes e depois. Nada aqui pode ser editado.</p></div>
+  </div>
+  <div class="card">
+    <div class="row">
+      <span class="btn"><app-icon name="calendar" [size]="16" />Últimos 7 dias</span>
+      <span class="btn">Tipo: todos<app-icon name="chevron-down" [size]="16" /></span>
+      <div class="input white search"><app-icon name="search" class="mut" /><input placeholder="Buscar por produto, nota ou fornecedor" /></div>
+    </div>
+
+    <div class="label-up mt8">Hoje · 25/11/2026</div>
+    <div class="ev"><span class="ic amb"><app-icon name="settings" /></span><div class="grow"><div>Margem global alterada de 28% para 30%</div><div class="small mut">Alteração de configuração · João</div></div><span class="small mut">08:12</span><a class="small acc" routerLink="/historico/detalhe">Ver detalhe</a></div>
+
+    <div class="label-up mt8">Ontem · 24/11/2026</div>
+    <div class="ev"><span class="ic"><app-icon name="scan" /></span><div class="grow"><div>Venda registrada — R$ 345,00 (Pix), 5 itens</div><div class="small mut">Venda · João</div></div><span class="small mut">16:42</span><a class="small acc" routerLink="/historico/detalhe">Ver detalhe</a></div>
+    <div class="ev"><span class="ic blu"><app-icon name="percent" /></span><div class="grow"><div>Margem individual de 40% adicionada — Semente de capim 1 kg</div><div class="small mut">Margem individual · João</div></div><span class="small mut">10:05</span><a class="small acc" routerLink="/historico/detalhe">Ver detalhe</a></div>
+    <div class="ev"><span class="ic"><app-icon name="file" /></span><div class="grow"><div>NF-e 000.123 recebida — AgroVale Distribuidora</div><div class="small mut">Nota recebida · busca automática</div></div><span class="small mut">09:42</span><a class="small acc" routerLink="/notas/000123/itens">Abrir nota</a></div>
+
+    <div class="label-up mt8">22/11/2026</div>
+    <div class="ev"><span class="ic"><app-icon name="check-circle" /></span><div class="grow"><div>NF-e 000.118 concluída — 3 produtos cadastrados, 2 preços atualizados</div><div class="small mut">Nota concluída · João</div></div><span class="small mut">16:20</span><a class="small acc" routerLink="/notas/000115">Ver detalhe</a></div>
+    <div class="ev"><span class="ic neu"><app-icon name="lock" /></span><div class="grow"><div>Preço travado em R$ 52,00 — Farelo de soja 10 kg</div><div class="small mut">Preço travado · João</div></div><span class="small mut">15:58</span><a class="small acc" routerLink="/historico/detalhe">Ver detalhe</a></div>
+    <div class="ev"><span class="ic amb"><app-icon name="cash" /></span><div class="grow"><div>Pagamento registrado — NF 000.110 · Rural Sul · R$ 980,00</div><div class="small mut">Pagamento · João</div></div><span class="small mut">11:30</span><a class="small acc" routerLink="/historico/detalhe">Ver detalhe</a></div>
+    <div class="ev"><span class="ic neu"><app-icon name="ban" /></span><div class="grow"><div>NF-e 000.112 rejeitada — nenhuma alteração aplicada</div><div class="small mut">Nota rejeitada · João</div></div><span class="small mut">09:15</span><a class="small acc" routerLink="/notas/000112">Ver detalhe</a></div>
+
+    <div class="pager"><span>Mostrando 8 de 214 registros</span><div class="pages"><a class="on">1</a><a>2</a><a>3</a><a><app-icon name="chevron-right" [size]="16" /></a></div></div>
+  </div>
+</div>
+
+@if (estado() === 'detalhe') {
+  <div class="overlay side"><div class="panel" style="width:460px">
+    <div class="panel-head"><div class="grow"><h2>Margem global alterada</h2><p class="mut small">25/11/2026 às 08:12 · João Almeida</p></div><a class="icon-btn" aria-label="Fechar" routerLink="/historico"><app-icon name="x" /></a></div>
+    <div class="panel-body">
+      <div class="grid-2">
+        <div class="inner col g4"><span class="small mut">Antes</span><span class="strong strike">28%</span></div>
+        <div class="inner col g4"><span class="small mut">Depois</span><span class="strong acc">30%</span></div>
+      </div>
+      <div class="kv"><span>Tipo</span><span>Alteração de configuração</span></div>
+      <div class="kv"><span>Onde</span><span>Configurações → Preços</span></div>
+      <div class="kv"><span>Efeito</span><span>Vale para as próximas notas</span></div>
+      <div class="alert"><app-icon name="info" /><span>Registros do histórico não podem ser editados nem apagados.</span></div>
+    </div>
+  </div></div>
+}
