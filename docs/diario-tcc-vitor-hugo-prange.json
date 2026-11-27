@@ -1,0 +1,636 @@
+{
+  "formato": "diario-tcc",
+  "versao": 2,
+  "turma": "Super Dev 9",
+  "exportado_em": "2026-11-27T22:54:58.932Z",
+  "aluno": "Vitor Hugo Prange",
+  "sistema": "PAM Agro",
+  "repositorios": [
+    {
+      "nome": "full stack",
+      "url": "https://github.com/VitorPrange/super-dev-09-curso-tcc"
+    }
+  ],
+  "encontros": [
+    {
+      "modulo": "TCC 1",
+      "encontro": 1,
+      "data": "2026-11-06",
+      "planejado": [
+        {
+          "item": "Mapa de telas do sistema",
+          "feito": true
+        },
+        {
+          "item": "Figma - Início",
+          "feito": true
+        },
+        {
+          "item": "Figma - Notificações",
+          "feito": true
+        },
+        {
+          "item": "Figma - Entenda os itens",
+          "feito": true
+        },
+        {
+          "item": "Figma - Você decide",
+          "feito": true
+        }
+      ],
+      "status": "entregue",
+      "entregue": "",
+      "como": "",
+      "commits": [],
+      "sistema_concluido": null,
+      "dificuldades": ""
+    },
+    {
+      "modulo": "TCC 1",
+      "encontro": 2,
+      "data": "2026-11-27",
+      "planejado": [
+        {
+          "item": "o .md com as sprints",
+          "feito": true
+        },
+        {
+          "item": "Notas Fiscais Tela",
+          "feito": true
+        },
+        {
+          "item": "Notas Fiscais - Aguardando ciencia",
+          "feito": true
+        },
+        {
+          "item": "Notas Fiscais - Nota com erro",
+          "feito": true
+        },
+        {
+          "item": "Notas Fiscais - import xml",
+          "feito": true
+        },
+        {
+          "item": "Notas Fiscais - Entenda os itens(revisar nota)",
+          "feito": true
+        },
+        {
+          "item": "Notas Fiscais/entenda-os-itens - Menu três pontos por item da nota",
+          "feito": true
+        },
+        {
+          "item": "Notas Fiscais/entenda-os-itens - Itens ocultos",
+          "feito": true
+        },
+        {
+          "item": "Notas Fiscais - Você decide(Revisar alteraçoes)",
+          "feito": true
+        },
+        {
+          "item": "Notas Fiscais/voce-decide - Cadastro rapido",
+          "feito": true
+        },
+        {
+          "item": "Notas Fiscais/voce-decide - Vinculo de produto",
+          "feito": true
+        }
+      ],
+      "status": "entregue",
+      "entregue": "",
+      "como": "",
+      "commits": [],
+      "sistema_concluido": 0,
+      "dificuldades": ""
+    },
+    {
+      "modulo": "TCC 1",
+      "encontro": 3,
+      "data": "2026-12-04",
+      "planejado": [
+        {
+          "item": "Notas Fiscais - Modais de confirmação (rejeitar, sair sem salvar, aplicando)",
+          "feito": false
+        },
+        {
+          "item": "Notas Fiscais - Atualizar etiquetas (etapa 4)",
+          "feito": false
+        },
+        {
+          "item": "Notas Fiscais - Detalhe da nota",
+          "feito": false
+        },
+        {
+          "item": "Notas Fiscais - Manifestação final",
+          "feito": false
+        },
+        {
+          "item": "Notas Fiscais/manifestacao - Lista de manifestações pendentes",
+          "feito": false
+        },
+        {
+          "item": "Histórico",
+          "feito": false
+        },
+        {
+          "item": "Produtos - Lista de produtos",
+          "feito": false
+        },
+        {
+          "item": "Produtos - Detalhe do produto",
+          "feito": false
+        },
+        {
+          "item": "Produtos - Novo / editar produto",
+          "feito": false
+        }
+      ],
+      "status": null,
+      "entregue": "",
+      "como": "",
+      "commits": [],
+      "sistema_concluido": null,
+      "dificuldades": ""
+    },
+    {
+      "modulo": "TCC 1",
+      "encontro": 4,
+      "data": "2026-12-11",
+      "planejado": [
+        {
+          "item": "Venda rápida (leitor)",
+          "feito": false
+        },
+        {
+          "item": "Estoque - Movimentações de estoque",
+          "feito": false
+        },
+        {
+          "item": "Estoque - Ajuste de estoque",
+          "feito": false
+        },
+        {
+          "item": "Estoque - Saída manual",
+          "feito": false
+        },
+        {
+          "item": "Financeiro - Contas a pagar",
+          "feito": false
+        },
+        {
+          "item": "Financeiro/contas-a-pagar - Registrar pagamento",
+          "feito": false
+        },
+        {
+          "item": "Financeiro - Fluxo de caixa",
+          "feito": false
+        },
+        {
+          "item": "Financeiro - Lançamentos",
+          "feito": false
+        }
+      ],
+      "status": null,
+      "entregue": "",
+      "como": "",
+      "commits": [],
+      "sistema_concluido": null,
+      "dificuldades": ""
+    },
+    {
+      "modulo": "TCC 1",
+      "encontro": 5,
+      "data": "2026-12-18",
+      "planejado": [
+        {
+          "item": "Configurações Tela",
+          "feito": false
+        },
+        {
+          "item": "Configurações - Preço",
+          "feito": false
+        },
+        {
+          "item": "Configurações - Categorias",
+          "feito": false
+        },
+        {
+          "item": "Configurações - Estoques e vendas",
+          "feito": false
+        },
+        {
+          "item": "Configurações - Vendas restritas",
+          "feito": false
+        },
+        {
+          "item": "Configurações - Loja e contas",
+          "feito": false
+        },
+        {
+          "item": "Primeiro acesso",
+          "feito": false
+        }
+      ],
+      "status": null,
+      "entregue": "",
+      "como": "",
+      "commits": [],
+      "sistema_concluido": null,
+      "dificuldades": ""
+    },
+    {
+      "modulo": "TCC 2",
+      "encontro": 1,
+      "data": "2027-01-20",
+      "planejado": [
+        {
+          "item": "Back - Projeto FastAPI + projeto Supabase (.env, CORS, health)",
+          "feito": false
+        },
+        {
+          "item": "Back - Diagrama do banco (DER)",
+          "feito": false
+        },
+        {
+          "item": "Back - Primeira migração Supabase (config, categoria, produto, fornecedor, vínculo, travados, margens)",
+          "feito": false
+        },
+        {
+          "item": "Back - Decidir transações (conexão direta ou função SQL via RPC)",
+          "feito": false
+        },
+        {
+          "item": "Back - Spike: abrir o certificado .pfx da loja",
+          "feito": false
+        }
+      ],
+      "status": null,
+      "entregue": "",
+      "como": "",
+      "commits": [],
+      "sistema_concluido": null,
+      "dificuldades": ""
+    },
+    {
+      "modulo": "TCC 2",
+      "encontro": 2,
+      "data": "2027-01-22",
+      "planejado": [
+        {
+          "item": "Back - Login com Supabase Auth e validação do token no FastAPI",
+          "feito": false
+        },
+        {
+          "item": "Front - Login real com interceptor e guarda de rota",
+          "feito": false
+        },
+        {
+          "item": "Back - Configurações de preço (margem global e arredondamento)",
+          "feito": false
+        },
+        {
+          "item": "Back - Categorias (CRUD + bloqueio com produtos)",
+          "feito": false
+        },
+        {
+          "item": "Back - Configurações da loja e conta",
+          "feito": false
+        }
+      ],
+      "status": null,
+      "entregue": "",
+      "como": "",
+      "commits": [],
+      "sistema_concluido": null,
+      "dificuldades": ""
+    },
+    {
+      "modulo": "TCC 2",
+      "encontro": 3,
+      "data": "2027-01-25",
+      "planejado": [
+        {
+          "item": "Back - Lista de produtos (filtros, ordenação, paginação)",
+          "feito": false
+        },
+        {
+          "item": "Back - Detalhe do produto (abas)",
+          "feito": false
+        },
+        {
+          "item": "Back - Novo / editar produto (validação, código de barras único)",
+          "feito": false
+        },
+        {
+          "item": "Back - Saldo inicial gera movimentação",
+          "feito": false
+        },
+        {
+          "item": "Back - Preços travados e margens individuais",
+          "feito": false
+        }
+      ],
+      "status": null,
+      "entregue": "",
+      "como": "",
+      "commits": [],
+      "sistema_concluido": null,
+      "dificuldades": ""
+    },
+    {
+      "modulo": "TCC 2",
+      "encontro": 4,
+      "data": "2027-01-27",
+      "planejado": [
+        {
+          "item": "Back - Importar XML (UploadFile, XML no Storage)",
+          "feito": false
+        },
+        {
+          "item": "Back - Leitura da NF-e (cabeçalho, itens, parcelas)",
+          "feito": false
+        },
+        {
+          "item": "Back - Nota com erro (inválido, não é NF-e, duplicada)",
+          "feito": false
+        },
+        {
+          "item": "Back - Lista de notas com filtros e paginação",
+          "feito": false
+        },
+        {
+          "item": "Back - XMLs de exemplo para teste",
+          "feito": false
+        }
+      ],
+      "status": null,
+      "entregue": "",
+      "como": "",
+      "commits": [],
+      "sistema_concluido": null,
+      "dificuldades": ""
+    },
+    {
+      "modulo": "TCC 2",
+      "encontro": 5,
+      "data": "2027-01-29",
+      "planejado": [
+        {
+          "item": "Back - Funções de arredondamento e terminar em (pytest)",
+          "feito": false
+        },
+        {
+          "item": "Back - Decisão do preço e classificação do item (pytest)",
+          "feito": false
+        },
+        {
+          "item": "Back - Casamento do item (vínculo cProd, cEAN)",
+          "feito": false
+        },
+        {
+          "item": "Back - Vendas restritas (regras + marca manual + CRUD)",
+          "feito": false
+        },
+        {
+          "item": "Back - Análise da nota (etapa 2, itens ocultos)",
+          "feito": false
+        },
+        {
+          "item": "Back - Ações do menu ⋯ do item",
+          "feito": false
+        }
+      ],
+      "status": null,
+      "entregue": "",
+      "como": "",
+      "commits": [],
+      "sistema_concluido": null,
+      "dificuldades": ""
+    },
+    {
+      "modulo": "TCC 2",
+      "encontro": 6,
+      "data": "2027-02-01",
+      "planejado": [
+        {
+          "item": "Back - Rascunho da decisão por nota",
+          "feito": false
+        },
+        {
+          "item": "Back - Cadastro rápido e vínculo de produto",
+          "feito": false
+        },
+        {
+          "item": "Back - Confirmação de redução de preço",
+          "feito": false
+        },
+        {
+          "item": "Back - Aplicar nota em transação (preços, cadastro, estoque, parcelas, histórico)",
+          "feito": false
+        },
+        {
+          "item": "Back - Rejeitar nota",
+          "feito": false
+        },
+        {
+          "item": "Back - Teste de falha (nada aplicado)",
+          "feito": false
+        }
+      ],
+      "status": null,
+      "entregue": "",
+      "como": "",
+      "commits": [],
+      "sistema_concluido": null,
+      "dificuldades": ""
+    },
+    {
+      "modulo": "TCC 2",
+      "encontro": 7,
+      "data": "2027-02-03",
+      "planejado": [
+        {
+          "item": "Back - Atualizar etiquetas e concluir nota",
+          "feito": false
+        },
+        {
+          "item": "Back - Detalhe da nota e baixar XML",
+          "feito": false
+        },
+        {
+          "item": "Back - Histórico com filtros e antes/depois",
+          "feito": false
+        },
+        {
+          "item": "Back - Início e primeiro acesso",
+          "feito": false
+        },
+        {
+          "item": "Back - Avisos do sino",
+          "feito": false
+        }
+      ],
+      "status": null,
+      "entregue": "",
+      "como": "",
+      "commits": [],
+      "sistema_concluido": null,
+      "dificuldades": ""
+    },
+    {
+      "modulo": "TCC 2",
+      "encontro": 8,
+      "data": "2027-02-05",
+      "planejado": [
+        {
+          "item": "Back - Busca por código de barras (leitor)",
+          "feito": false
+        },
+        {
+          "item": "Back - Confirmar venda (estoque, financeiro, histórico)",
+          "feito": false
+        },
+        {
+          "item": "Back - Estorno de venda",
+          "feito": false
+        },
+        {
+          "item": "Back - Movimentações, ajuste e saída manual",
+          "feito": false
+        },
+        {
+          "item": "Back - Configurações de estoque e vendas",
+          "feito": false
+        }
+      ],
+      "status": null,
+      "entregue": "",
+      "como": "",
+      "commits": [],
+      "sistema_concluido": null,
+      "dificuldades": ""
+    },
+    {
+      "modulo": "TCC 2",
+      "encontro": 9,
+      "data": "2027-02-10",
+      "planejado": [
+        {
+          "item": "Back - Contas a pagar e nova conta",
+          "feito": false
+        },
+        {
+          "item": "Back - Registrar e reabrir pagamento",
+          "feito": false
+        },
+        {
+          "item": "Back - Lançamentos",
+          "feito": false
+        },
+        {
+          "item": "Back - Fluxo de caixa",
+          "feito": false
+        },
+        {
+          "item": "Back - Fornecedores (lista e detalhe)",
+          "feito": false
+        }
+      ],
+      "status": null,
+      "entregue": "",
+      "como": "",
+      "commits": [],
+      "sistema_concluido": null,
+      "dificuldades": ""
+    },
+    {
+      "modulo": "TCC 2",
+      "encontro": 10,
+      "data": "2027-02-12",
+      "planejado": [
+        {
+          "item": "Back - Certificado no Storage e conexão SEFAZ",
+          "feito": false
+        },
+        {
+          "item": "Back - Distribuição DF-e por NSU (homologação)",
+          "feito": false
+        },
+        {
+          "item": "Back - Agendador e bloqueio de 1 hora (cStat 656)",
+          "feito": false
+        },
+        {
+          "item": "Back - Ciência da operação (210210)",
+          "feito": false
+        },
+        {
+          "item": "Back - Manifestação final (210200, 210220, 210240)",
+          "feito": false
+        }
+      ],
+      "status": null,
+      "entregue": "",
+      "como": "",
+      "commits": [],
+      "sistema_concluido": null,
+      "dificuldades": ""
+    },
+    {
+      "modulo": "TCC 2",
+      "encontro": 11,
+      "data": "2027-02-15",
+      "planejado": [
+        {
+          "item": "Back - Fluxo completo com os XMLs de exemplo",
+          "feito": false
+        },
+        {
+          "item": "Back - Testes de integração com TestClient",
+          "feito": false
+        },
+        {
+          "item": "Back - Seed de demonstração",
+          "feito": false
+        },
+        {
+          "item": "README de como rodar",
+          "feito": false
+        },
+        {
+          "item": "Ensaio da apresentação",
+          "feito": false
+        }
+      ],
+      "status": null,
+      "entregue": "",
+      "como": "",
+      "commits": [],
+      "sistema_concluido": null,
+      "dificuldades": ""
+    },
+    {
+      "modulo": "TCC 2",
+      "encontro": 12,
+      "data": "2027-02-17",
+      "planejado": [],
+      "status": null,
+      "entregue": "",
+      "como": "",
+      "commits": [],
+      "sistema_concluido": null,
+      "dificuldades": ""
+    },
+    {
+      "modulo": "TCC 2",
+      "encontro": 13,
+      "data": "2027-02-19",
+      "planejado": [],
+      "status": null,
+      "entregue": "",
+      "como": "",
+      "commits": [],
+      "sistema_concluido": null,
+      "dificuldades": ""
+    }
+  ]
+}
