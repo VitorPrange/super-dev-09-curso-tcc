@@ -1,0 +1,78 @@
+<div class="page">
+  <div class="page-head"><div class="grow"><h1>Configurações</h1><p>Ajuste o PAM ao jeito da sua loja.</p></div></div>
+  <div class="cfg">
+    <app-config-nav />
+    <div class="cfg-body">
+      <div class="tabs">
+        <a [class.on]="!estado()" routerLink="/configuracoes/precos">Margem e arredondamento</a>
+        <a [class.on]="estado() === 'travados'" routerLink="/configuracoes/precos/travados">Preços travados · 3</a>
+        <a [class.on]="estado() === 'margens'" routerLink="/configuracoes/precos/margens">Margens individuais · 2</a>
+      </div>
+
+      @switch (estado()) {
+        @case ('travados') {
+          <div class="card p24">
+            <div class="row sb"><h2>Preços travados</h2><span class="btn sm primary"><app-icon name="lock" [size]="15" />Travar produto…</span></div>
+            <p class="small mut">Produtos travados não recebem sugestão de preço nas revisões de notas. O preço só muda por edição manual.</p>
+            <div class="input white"><app-icon name="search" class="mut" /><input placeholder="Buscar produto" /></div>
+            <table class="table">
+              <thead><tr><th>Produto</th><th class="r">Preço travado</th><th>Travado em</th><th class="r"></th></tr></thead>
+              <tbody>
+                <tr><td class="strong">Farelo de soja 10 kg</td><td class="r">R$ 52,00</td><td class="mut">22/11/2026 · João</td><td class="r"><span class="btn sm"><app-icon name="unlock" [size]="15" />Destravar</span></td></tr>
+                <tr><td class="strong">Ração gato adulto 10 kg</td><td class="r">R$ 124,90</td><td class="mut">20/11/2026 · João</td><td class="r"><span class="btn sm"><app-icon name="unlock" [size]="15" />Destravar</span></td></tr>
+                <tr><td class="strong">Sal grosso 25 kg</td><td class="r">R$ 39,90</td><td class="mut">02/10/2026 · João</td><td class="r"><span class="btn sm"><app-icon name="unlock" [size]="15" />Destravar</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        }
+        @case ('margens') {
+          <div class="card p24">
+            <div class="row sb"><h2>Margens individuais</h2><span class="btn sm primary"><app-icon name="plus" [size]="15" />Adicionar margem individual…</span></div>
+            <p class="small mut">Estes produtos usam a margem própria no lugar da global. Se o preço estiver travado, o cadeado vence.</p>
+            <table class="table">
+              <thead><tr><th>Produto</th><th class="r">Margem individual</th><th class="r">Preço atual</th><th>Definida em</th><th class="r"></th></tr></thead>
+              <tbody>
+                <tr><td class="strong">Semente de capim 1 kg</td><td class="r"><span class="badge blu">40%</span></td><td class="r">R$ 28,00</td><td class="mut">24/11/2026</td><td class="r"><span class="small acc">Editar</span> · <span class="small red">Remover</span></td></tr>
+                <tr><td class="strong">Ração gato adulto 10 kg <app-icon name="lock" [size]="13" class="mut" /></td><td class="r"><span class="badge neu">35% · não usada (travado)</span></td><td class="r">R$ 124,90</td><td class="mut">12/11/2026</td><td class="r"><span class="small acc">Editar</span> · <span class="small red">Remover</span></td></tr>
+              </tbody>
+            </table>
+            <p class="small mut">Remover devolve o produto à margem global (30%).</p>
+          </div>
+        }
+        @default {
+          <div class="card p24">
+            <h2>Margem global</h2>
+            <p class="small mut">Preço sugerido = valor unitário da nota ÷ fator de conversão × (1 + margem). Frete, desconto, seguro, ST e IPI não entram.</p>
+            <div class="row g16">
+              <div class="input" style="width:140px"><input value="30" /><span class="suf">%</span></div>
+              <span class="acc strong">Preço = custo × 1,30</span>
+              <span class="mut small">Ex.: R$ 80,00 → R$ 104,00 · equivale a ~23% de margem sobre o preço de venda</span>
+            </div>
+          </div>
+          <div class="card p24">
+            <div class="row sb"><h2>Arredondar preços sugeridos</h2><span class="toggle on"></span></div>
+            <p class="small mut">Vale só para o preço sugerido automático. Preços digitados à mão e o "Terminar em…" não passam por ele.</p>
+            <table class="table" style="max-width:420px">
+              <thead><tr><th>Centavos do preço calculado</th><th>Vira</th></tr></thead>
+              <tbody>
+                <tr><td>,00</td><td class="strong">permanece ,00</td></tr>
+                <tr><td>,01 a ,49</td><td class="strong">,50</td></tr>
+                <tr><td>,50 a ,89</td><td class="strong">,90</td></tr>
+                <tr><td>,90 a ,99</td><td class="strong">,99</td></tr>
+              </tbody>
+            </table>
+            <div class="inner row g16">
+              <span class="small mut">Simulação</span>
+              <div class="input white" style="width:140px;height:38px"><span class="suf">R$</span><input value="97,50" /></div>
+              <app-icon name="arrow-right" class="mut" />
+              <span class="strong acc">R$ 97,90</span>
+              <span class="small mut">19,00 → 19,00 · 19,32 → 19,50 · 19,90 → 19,99</span>
+            </div>
+            <div class="alert warn"><app-icon name="alert" /><span>Ao ligar, preços atuais que não seguem esta regra (por exemplo, R$ 78,30) passarão a ser propostos como alterados quando o item aparecer numa nota. Valores que terminam em ,00 não mudam.</span></div>
+          </div>
+          <div class="save-bar"><span class="small mut">Isso muda o preço sugerido nas próximas notas; os preços atuais não mudam.</span><span class="btn primary">Salvar</span></div>
+        }
+      }
+    </div>
+  </div>
+</div>

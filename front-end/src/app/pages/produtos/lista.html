@@ -1,0 +1,62 @@
+<div class="page">
+  <div class="page-head">
+    <div class="grow"><h1>Produtos</h1><p>Seu catálogo, estoque e preços em um só lugar.</p></div>
+    <span class="btn"><app-icon name="download" />Exportar lista</span>
+    <a class="btn primary" routerLink="/produtos/novo"><app-icon name="plus" />Novo produto</a>
+  </div>
+
+  <div class="tabs">
+    <a class="on" routerLink="/produtos">Catálogo</a>
+    <a routerLink="/estoque/movimentacoes">Movimentações</a>
+    <a routerLink="/estoque/ajuste">Ajuste de estoque</a>
+    <a routerLink="/estoque/saida">Saída manual</a>
+    <a routerLink="/fornecedores">Fornecedores</a>
+  </div>
+
+  @if (estado() === 'vazio') {
+    <div class="card p24"><div class="empty">
+      <span class="ico"><app-icon name="package" [size]="34" /></span>
+      <h2 style="color:var(--ink)">Nenhum produto cadastrado ainda</h2>
+      <p>Cadastre o primeiro produto ou importe uma nota: os itens novos viram produtos com a sua aprovação.</p>
+      <div class="row"><a class="btn" routerLink="/produtos/novo">Novo produto</a><a class="btn primary" routerLink="/notas/importar">Importar nota</a></div>
+    </div></div>
+  } @else {
+  <div class="card">
+    <div class="row">
+      <div class="input white search"><app-icon name="search" class="mut" /><input placeholder="Buscar por nome, código de barras ou código do fornecedor" /></div>
+      <span class="btn">Categoria: todas<app-icon name="chevron-down" [size]="16" /></span>
+      <span class="btn">Ordenar: nome A–Z<app-icon name="chevron-down" [size]="16" /></span>
+    </div>
+    <div class="row sb">
+      <div class="chips">
+        <a class="chip" [class.on]="estado() !== 'baixo-estoque'" routerLink="/produtos">Todos · 128</a>
+        <a class="chip" [class.on]="estado() === 'baixo-estoque'" routerLink="/produtos/baixo-estoque">Baixo estoque · 4</a>
+        <span class="chip">Sem estoque · 1</span>
+        <span class="chip">Venda restrita · 6</span>
+        <span class="chip">Preço travado · 3</span>
+        <span class="chip">Margem individual · 2</span>
+      </div>
+      <span class="check small mut"><span class="box"></span>Mostrar desativados</span>
+    </div>
+
+    <table class="table">
+      <thead><tr><th>Produto</th><th>Categoria</th><th class="r">Estoque</th><th class="r">Mínimo</th><th class="r">Preço de venda</th><th class="r">Último custo</th><th>Atualizado em</th><th>Situação</th><th class="menu-cell"></th></tr></thead>
+      <tbody>
+        <tr><td><a class="strong" routerLink="/produtos/racao-bovina">Ração bovina 25 kg</a></td><td class="mut">Alimento</td><td class="r amb strong">3</td><td class="r mut">10</td><td class="r">R$ 104,00</td><td class="r mut">R$ 80,00</td><td class="mut">24/11/2026</td><td><span class="badge amb">Baixo estoque</span></td><td class="menu-cell"><span class="icon-btn row-menu"><app-icon name="more" /></span></td></tr>
+        <tr><td><a class="strong" routerLink="/produtos/racao-bovina">Semente de capim 1 kg</a></td><td class="mut">Sementes</td><td class="r amb strong">2</td><td class="r mut">8</td><td class="r">R$ 28,00</td><td class="r mut">R$ 20,00</td><td class="mut">24/11/2026</td><td><div class="row g6"><span class="badge amb">Baixo estoque</span><span class="badge blu sm">Margem 40%</span></div></td><td class="menu-cell"><span class="icon-btn row-menu"><app-icon name="more" /></span></td></tr>
+        <tr><td><a class="strong" routerLink="/produtos/racao-bovina">Milho triturado 25 kg</a></td><td class="mut">Alimento</td><td class="r amb strong">4</td><td class="r mut">6</td><td class="r">R$ 78,00</td><td class="r mut">R$ 60,00</td><td class="mut">22/11/2026</td><td><span class="badge amb">Baixo estoque</span></td><td class="menu-cell"><span class="icon-btn row-menu"><app-icon name="more" /></span></td></tr>
+        <tr><td><a class="strong" routerLink="/produtos/racao-bovina">Coleira antipulgas M</a></td><td class="mut">Pet</td><td class="r red strong">0</td><td class="r mut">4</td><td class="r">R$ 39,90</td><td class="r mut">R$ 28,00</td><td class="mut">20/11/2026</td><td><span class="badge red">Sem estoque</span></td><td class="menu-cell"><span class="icon-btn row-menu"><app-icon name="more" /></span></td></tr>
+        @if (estado() !== 'baixo-estoque') {
+          <tr><td><a class="strong" routerLink="/produtos/racao-bovina">Farelo de soja 10 kg</a></td><td class="mut">Alimento</td><td class="r">22</td><td class="r mut">8</td><td class="r">R$ 52,00</td><td class="r mut">R$ 40,00</td><td class="mut">18/11/2026</td><td><span class="badge neu"><app-icon name="lock" [size]="13" />Preço travado</span></td><td class="menu-cell"><span class="icon-btn row-menu"><app-icon name="more" /></span></td></tr>
+          <tr><td><a class="strong" routerLink="/produtos/racao-bovina">Fertilizante NPK 5 kg</a></td><td class="mut">Fertilizantes</td><td class="r">14</td><td class="r mut">5</td><td class="r">R$ 99,90</td><td class="r mut">R$ 75,00</td><td class="mut">15/11/2026</td><td><span class="badge">Normal</span></td><td class="menu-cell"><span class="icon-btn row-menu"><app-icon name="more" /></span></td></tr>
+          <tr><td><a class="strong" routerLink="/produtos/racao-bovina">Vermífugo bovino 50 ml</a></td><td class="mut">Medicamentos</td><td class="r">9</td><td class="r mut">3</td><td class="r">R$ 24,90</td><td class="r mut">R$ 18,50</td><td class="mut">12/11/2026</td><td><span class="badge red"><app-icon name="shield" [size]="13" />Venda restrita</span></td><td class="menu-cell"><span class="icon-btn row-menu"><app-icon name="more" /></span></td></tr>
+          <tr><td><a class="strong" routerLink="/produtos/racao-bovina">Ração gato adulto 10 kg</a></td><td class="mut">Pet</td><td class="r">11</td><td class="r mut">4</td><td class="r">R$ 124,90</td><td class="r mut">R$ 96,00</td><td class="mut">20/11/2026</td><td><span class="badge">Normal</span></td><td class="menu-cell"><span class="icon-btn row-menu"><app-icon name="more" /></span></td></tr>
+          <tr><td><a class="strong" routerLink="/produtos/racao-bovina">Bebedouro plástico 5 litros</a></td><td class="mut">Equipamento</td><td class="r">3</td><td class="r mut">2</td><td class="r">R$ 64,90</td><td class="r mut">R$ 50,00</td><td class="mut">10/11/2026</td><td><span class="badge">Normal</span></td><td class="menu-cell"><span class="icon-btn row-menu"><app-icon name="more" /></span></td></tr>
+        }
+      </tbody>
+    </table>
+    <div class="pager"><span>{{ estado() === 'baixo-estoque' ? '1–4 de 4 produtos' : '1–9 de 128 produtos' }}</span><div class="pages"><a><app-icon name="chevron-left" [size]="16" /></a><a class="on">1</a><a>2</a><a>3</a><span>…</span><a>15</a><a><app-icon name="chevron-right" [size]="16" /></a></div></div>
+    <p class="small mut">Passe o mouse na linha para ver o menu ⋯: Editar · Ajustar estoque · Ver movimentações · Desativar.</p>
+  </div>
+  }
+</div>

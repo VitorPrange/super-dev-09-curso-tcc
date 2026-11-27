@@ -1,0 +1,198 @@
+<div class="page">
+  <div class="page-head">
+    <div class="grow"><h1>Você decide o que vai mudar</h1><p>Escolha item por item. Nada é aplicado até você confirmar.</p></div>
+    <a class="btn" routerLink="/notas/000123/itens"><app-icon name="arrow-left" />Voltar aos itens</a>
+  </div>
+  <app-steps [atual]="3" />
+
+  @if (estado() === 'falha') {
+    <div class="alert err"><app-icon name="alert" /><span class="grow"><span class="strong">Não foi possível aplicar as alterações. Nada foi aplicado.</span> Suas escolhas continuam aqui.</span><span class="btn sm">Tentar de novo</span></div>
+  }
+
+  <!-- Dec-6 -->
+  <div class="card">
+    <div class="row sb">
+      <div class="col g4"><span class="strong">NF-e 000.123 • AgroVale Distribuidora</span><span class="small mut">Margem desta nota vale só para ela. Margens individuais e preços travados continuam valendo por cima.</span></div>
+      <div class="row">
+        <div class="col g4 right"><span class="small mut">Margem sobre custo</span><span class="acc strong">Preço = custo × 1,30</span></div>
+        <div class="input" style="width:100px;height:40px"><input value="30" /><span class="suf">% ✎</span></div>
+        <span class="btn sm ghost">Salvar como padrão</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="split-wide">
+    <div class="col g16">
+      <!-- Novos -->
+      <div class="card">
+        <div class="row sb"><h2>Cadastrar os novos produtos?</h2><span class="badge">3 novos</span></div>
+        <div class="dec">
+          <div class="grow col g4"><span class="strong">Suplemento mineral 5 kg</span><span class="small mut">10 un. · custo R$ 40,00 → sugerido <span class="acc">R$ 52,00</span> · Categoria: Suplemento</span></div>
+          <span class="badge"><app-icon name="check" [size]="13" />Cadastro completo</span>
+          <div class="seg"><a class="on" routerLink="/notas/000123/decisao/cadastrar">Cadastrar</a><a routerLink="/notas/000123/decisao/vincular">Vincular</a><span>Não cadastrar</span></div>
+        </div>
+        <div class="dec">
+          <div class="grow col g4"><span class="strong">Sal mineral 10 kg</span><span class="small mut">15 un. · custo R$ 30,00 → sugerido <span class="acc">R$ 39,00</span> · falta a categoria</span></div>
+          <span class="badge amb">Completar cadastro</span>
+          <div class="seg"><a class="on" routerLink="/notas/000123/decisao/cadastrar">Cadastrar</a><a routerLink="/notas/000123/decisao/vincular">Vincular</a><span>Não cadastrar</span></div>
+        </div>
+        <div class="dec">
+          <div class="grow col g4"><span class="strong">Bebedouro 5 L</span><span class="small mut">4 un. · vinculado a <span class="strong" style="color:var(--ink)">Bebedouro plástico 5 litros</span> (fator 1)</span></div>
+          <span class="badge blu"><app-icon name="link" [size]="13" />Vinculado</span>
+          <div class="seg"><a routerLink="/notas/000123/decisao/cadastrar">Cadastrar</a><a class="on" routerLink="/notas/000123/decisao/vincular">Vincular</a><span>Não cadastrar</span></div>
+        </div>
+      </div>
+
+      <!-- Preços -->
+      <div class="card">
+        <div class="row sb"><h2>Atualizar estes preços?</h2><span class="badge amb">3 preços alterados</span></div>
+        <div class="dec">
+          <div class="grow col g4"><span class="strong">Ração bovina 25 kg</span><span class="small mut">R$ 98,00 → <span class="acc strong">R$ 104,00</span> (+R$ 6,00)</span></div>
+          <div class="input price-in"><span class="suf">R$</span><input value="104,00" /></div>
+          <div class="seg"><span class="on">Atualizar</span><span>Manter</span></div>
+        </div>
+        <div class="dec">
+          <div class="grow col g4"><span class="strong">Semente de capim 1 kg <span class="badge blu sm">Margem individual 40%</span></span><span class="small mut">R$ 25,00 → <span class="acc strong">R$ 28,00</span> (+R$ 3,00)</span></div>
+          <div class="input price-in"><span class="suf">R$</span><input value="28,00" /></div>
+          <div class="seg"><span class="on">Atualizar</span><span>Manter</span></div>
+        </div>
+        <div class="dec" style="flex-direction:column;align-items:stretch">
+          <div class="row">
+            <div class="grow col g4"><span class="strong">Fertilizante NPK 5 kg <span class="badge red sm"><app-icon name="arrow-down" [size]="12" />Redução</span></span><span class="small mut">R$ 99,90 → <span class="red strong">R$ 97,90</span> (−R$ 2,00)</span></div>
+            <div class="input price-in"><span class="suf">R$</span><input value="97,90" /></div>
+            <div class="seg"><span class="on">Atualizar</span><span>Manter</span></div>
+          </div>
+          <!-- Dec-11: confirmação junto ao item -->
+          <div class="confirm">
+            <app-icon name="arrow-down" class="amb" />
+            <span class="grow">Reduzir o preço de R$ 99,90 para R$ 97,90 (−R$ 2,00)?</span>
+            <span class="btn sm">Cancelar</span><span class="btn sm primary">Confirmar redução</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card tint">
+        <div class="row top"><app-icon name="equal" class="mut" /><div class="col g4 grow">
+          <span class="strong">2 itens seguem sem alteração de preço</span>
+          <span class="small mut">Milho triturado 25 kg (sugerido igual ao atual) · Farelo de soja 10 kg <app-icon name="lock" [size]="12" /> preço travado em R$ 52,00</span>
+        </div><span class="btn sm"><app-icon name="edit" [size]="15" />Editar preço do travado</span></div>
+      </div>
+
+      <!-- Dec-3: modo "Por item" -->
+      <div class="card">
+        <div class="row sb"><h2>Entrada no estoque</h2><span class="small mut">Modo: Por item · <a class="acc" routerLink="/configuracoes/estoque">mudar</a></span></div>
+        <table class="table">
+          <thead><tr><th>Entra?</th><th>Produto</th><th class="r">Na nota</th><th class="r">Fator</th><th>Quantidade que entra</th></tr></thead>
+          <tbody>
+            <tr><td><span class="toggle on"></span></td><td>Ração bovina 25 kg</td><td class="r">20 sc</td><td class="r">1</td><td><div class="input" style="width:120px;height:36px"><input value="20" /><span class="suf">un.</span></div></td></tr>
+            <tr><td><span class="toggle on"></span></td><td>Semente de capim 1 kg</td><td class="r">30 un.</td><td class="r">1</td><td><div class="input" style="width:120px;height:36px"><input value="30" /><span class="suf">un.</span></div></td></tr>
+            <tr class="hl"><td><span class="toggle on"></span></td><td>Suplemento mineral 5 kg <span class="small amb">· chegou incompleto</span></td><td class="r">10 un.</td><td class="r">1</td><td><div class="input" style="width:120px;height:36px"><input value="8" /><span class="suf">un.</span></div></td></tr>
+            <tr class="muted"><td><span class="toggle"></span></td><td>Fertilizante NPK 5 kg</td><td class="r">8 un.</td><td class="r">1</td><td>Não entra agora</td></tr>
+          </tbody>
+        </table>
+        <span class="small mut">+ 4 itens com entrada ligada · itens "Não cadastrar" não geram entrada</span>
+      </div>
+
+      <!-- Dec-4 -->
+      <div class="card">
+        <div class="row sb"><h2>Contas a pagar</h2><span class="small mut">Parcelas lidas da nota (duplicatas)</span></div>
+        <table class="table">
+          <thead><tr><th>Parcela</th><th>Vencimento</th><th class="r">Valor</th></tr></thead>
+          <tbody>
+            <tr><td>001</td><td>24/12/2026</td><td class="r">R$ 1.240,00</td></tr>
+            <tr><td>002</td><td>23/01/2027</td><td class="r">R$ 1.240,00</td></tr>
+            <tr><td>003</td><td>22/02/2027</td><td class="r">R$ 1.240,00</td></tr>
+          </tbody>
+          <tfoot><tr><td colspan="2">Total</td><td class="r">R$ 3.720,00</td></tr></tfoot>
+        </table>
+        <span class="btn sm" style="align-self:flex-start"><app-icon name="plus" [size]="15" />Adicionar parcela</span>
+      </div>
+    </div>
+
+    <div class="col g16" style="position:sticky;top:96px">
+      <div class="card">
+        <h2>Sua seleção</h2>
+        <div class="row g8" style="align-items:baseline"><span class="num">7</span><span class="mut">alterações selecionadas</span></div>
+        <div class="kv"><span>Produtos para cadastrar</span><span>2</span></div>
+        <div class="kv"><span>Vínculos a produtos existentes</span><span>1</span></div>
+        <div class="kv"><span>Preços para atualizar</span><span>3</span></div>
+        <div class="kv"><span>Reduções de preço</span><span class="amb">1 (aguardando confirmação)</span></div>
+        <div class="kv"><span>Entradas no estoque</span><span>7 itens</span></div>
+        <div class="kv"><span>Parcelas</span><span>3</span></div>
+        <div class="divider"></div>
+        <div class="inner row top"><span class="box on"><app-icon name="check" [size]="14" [stroke]="3" /></span><span class="small">Revisei as escolhas e autorizo aplicar estas alterações.</span></div>
+        <p class="small mut">Ao confirmar, o catálogo, o estoque e as contas são atualizados de uma vez, e tudo fica no histórico.</p>
+        <a class="btn primary block" routerLink="/notas/000123/etiquetas">Confirmar e aplicar 7 alterações</a>
+        <a class="btn block" routerLink="/notas/000123/decisao/sair">Revisar depois</a>
+        <a class="btn block danger-ghost" routerLink="/notas/000123/decisao/rejeitar">Rejeitar todas as propostas</a>
+      </div>
+      <div class="card tint">
+        <div class="row top"><app-icon name="tag" class="acc" /><div class="col g4"><span class="strong">Depois de confirmar</span><span class="small mut">Atualize as etiquetas da loja para os novos preços. O PAM lista o que trocar.</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+@switch (estado()) {
+  @case ('cadastrar') {
+    <!-- N2: Cadastrar novo -->
+    <div class="overlay side"><div class="panel">
+      <div class="panel-head"><div class="grow"><h2>Sal mineral 10 kg</h2><p class="mut">Complete o que o XML não traz. Nada é gravado até "Confirmar e aplicar".</p></div><a class="icon-btn" aria-label="Fechar" routerLink="/notas/000123/decisao"><app-icon name="x" /></a></div>
+      <div class="panel-body">
+        <div class="tabs"><a class="on">Cadastrar novo</a><a routerLink="/notas/000123/decisao/vincular">Vincular a existente</a></div>
+        <div class="field"><label>Nome de exibição *</label><div class="input"><input value="Sal mineral 10 kg" /></div><span class="hint">Veio da nota: "SAL MINERAL BOVINO 10KG PCT"</span></div>
+        <div class="field err"><label>Categoria *</label><div class="input"><input placeholder="Escolha uma categoria" /><app-icon name="chevron-down" [size]="16" /></div><span class="hint">Escolha uma categoria para continuar.</span></div>
+        <div class="grid-2">
+          <div class="field"><label>Unidade da nota</label><div class="input ro">UN</div></div>
+          <div class="field"><label>Unidade de venda</label><div class="input"><input value="Unidade" /><app-icon name="chevron-down" [size]="16" /></div></div>
+        </div>
+        <div class="field"><label>Fator de conversão</label><div class="input"><input value="1" /></div><span class="hint">Quantas unidades de venda vêm em 1 unidade da nota?</span></div>
+        <div class="grid-2">
+          <div class="field"><label>Custo unitário</label><div class="input ro">R$ 30,00</div></div>
+          <div class="field"><label>Preço sugerido</label><div class="input"><span class="suf">R$</span><input value="39,00" /></div></div>
+        </div>
+        <div class="grid-2">
+          <div class="field"><label>Estoque mínimo</label><div class="input"><input value="5" /></div></div>
+          <div class="field"><label>Código de barras</label><div class="input"><input value="7891234567012" /></div><span class="hint">Da nota (fator 1)</span></div>
+        </div>
+        <div class="grid-2 small">
+          <div class="col g4"><span class="mut">NCM</span><span>2501.00.90</span></div>
+          <div class="col g4"><span class="mut">Código no fornecedor</span><span>SM-10</span></div>
+        </div>
+        <div class="inner row sb"><div class="col g4"><span class="strong">Venda restrita</span><span class="small mut">Automático: nenhuma regra bateu</span></div><div class="row g8"><span class="small mut">Não restrito</span><span class="toggle"></span></div></div>
+        <div class="alert warn"><app-icon name="alert" /><span>Já existe um produto com nome parecido: <span class="strong">Sal mineral 25 kg</span>. Quer vincular a ele?</span></div>
+      </div>
+      <div class="panel-foot"><a class="btn" routerLink="/notas/000123/decisao">Cancelar</a><a class="btn primary" routerLink="/notas/000123/decisao">Salvar escolha</a></div>
+    </div></div>
+  }
+  @case ('vincular') {
+    <!-- N2: Vincular -->
+    <div class="overlay side"><div class="panel">
+      <div class="panel-head"><div class="grow"><h2>Bebedouro 5 L</h2><p class="mut">Ligue este item a um produto que você já tem.</p></div><a class="icon-btn" aria-label="Fechar" routerLink="/notas/000123/decisao"><app-icon name="x" /></a></div>
+      <div class="panel-body">
+        <div class="tabs"><a routerLink="/notas/000123/decisao/cadastrar">Cadastrar novo</a><a class="on">Vincular a existente</a></div>
+        <div class="input focus"><app-icon name="search" class="mut" /><input value="bebedouro" /></div>
+        <div class="option on"><span class="radio on"></span><div class="grow col g4"><span class="strong">Bebedouro plástico 5 litros</span><span class="small mut">Equipamento · R$ 64,90 · 3 em estoque</span></div></div>
+        <div class="option"><span class="radio"></span><div class="grow col g4"><span class="strong">Bebedouro automático 10 L</span><span class="small mut">Equipamento · R$ 129,00 · 1 em estoque</span></div></div>
+        <div class="option"><span class="radio"></span><div class="grow col g4"><span class="strong">Bebedouro para aves 3 L</span><span class="small mut">Equipamento · R$ 34,90 · 6 em estoque</span></div></div>
+        <div class="field"><label>Fator de conversão</label><div class="input"><input value="1" /></div><span class="hint">Quantas unidades de venda vêm em 1 unidade da nota?</span></div>
+        <div class="alert ok"><app-icon name="link" /><span>As próximas notas da AgroVale com o código <span class="strong">BB-05</span> serão reconhecidas automaticamente.</span></div>
+      </div>
+      <div class="panel-foot"><a class="btn" routerLink="/notas/000123/decisao">Cancelar</a><a class="btn primary" routerLink="/notas/000123/decisao">Salvar escolha</a></div>
+    </div></div>
+  }
+  @case ('rejeitar') {
+    <div class="overlay"><div class="modal">
+      <div class="modal-head"><div class="grow"><h2>Rejeitar todas as propostas desta nota?</h2></div><a class="icon-btn" aria-label="Fechar" routerLink="/notas/000123/decisao"><app-icon name="x" /></a></div>
+      <p>Nenhum cadastro, preço ou estoque será alterado. A nota ficará como <span class="strong">Rejeitada</span> no histórico.</p>
+      <div class="modal-foot"><a class="btn" routerLink="/notas/000123/decisao">Cancelar</a><a class="btn danger" routerLink="/notas">Rejeitar</a></div>
+    </div></div>
+  }
+  @case ('sair') {
+    <div class="overlay"><div class="modal">
+      <div class="modal-head"><div class="grow"><h2>Você tem escolhas não salvas</h2><p>7 escolhas feitas nesta nota, incluindo a margem alterada e 1 redução.</p></div><a class="icon-btn" aria-label="Fechar" routerLink="/notas/000123/decisao"><app-icon name="x" /></a></div>
+      <div class="alert ok"><app-icon name="check-circle" /><span>"Revisar depois" salva um rascunho. A nota continua aguardando aprovação.</span></div>
+      <div class="modal-foot"><a class="btn ghost" routerLink="/notas/000123/decisao">Continuar aqui</a><a class="btn danger-ghost" routerLink="/notas">Sair sem salvar</a><a class="btn primary" routerLink="/notas">Salvar rascunho e sair</a></div>
+    </div></div>
+  }
+}
